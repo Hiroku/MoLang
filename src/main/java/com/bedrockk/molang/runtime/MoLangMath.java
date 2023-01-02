@@ -16,7 +16,7 @@ public final class MoLangMath {
             put("atan", params -> Math.atan(params.getDouble(0)) * 180 / Math.PI);
             put("atan2", params -> Math.atan2(params.getDouble(0), params.getDouble(1)) * 180 / Math.PI);
             put("ceil", params -> Math.ceil(params.getDouble(0)));
-            put("clamp", params -> Math.min(params.getDouble(1), Math.max(params.getDouble(0), params.getDouble(2))));
+            put("clamp", params -> Math.min(params.getDouble(2), Math.max(params.getDouble(0), params.getDouble(1))));
             put("cos", params -> Math.cos(params.getDouble(0) * Math.PI / 180));
             put("die_roll", params -> dieRoll(params.getDouble(0), params.getDouble(1), params.getDouble(2)));
             put("die_roll_integer", params -> dieRollInt(params.getInt(0), params.getInt(1), params.getInt(2)));
