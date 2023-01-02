@@ -10,14 +10,14 @@ public final class MoLangMath {
     public static final QueryStruct LIBRARY = new QueryStruct(new HashMap<String, Function<MoParams, Object>>(){
         {
             put("abs", params -> Math.abs(params.getDouble(0)));
-            put("acos", params -> Math.acos(params.getDouble(0)));
-            put("sin", params -> Math.sin(params.getDouble(0)));
-            put("asin", params -> Math.asin(params.getDouble(0)));
-            put("atan", params -> Math.atan(params.getDouble(0)));
-            put("atan2", params -> Math.atan2(params.getDouble(0), params.getDouble(1)));
+            put("acos", params -> Math.acos(params.getDouble(0)) * 180 / Math.PI);
+            put("sin", params -> Math.sin(params.getDouble(0) * Math.PI / 180));
+            put("asin", params -> Math.asin(params.getDouble(0)) * 180 / Math.PI);
+            put("atan", params -> Math.atan(params.getDouble(0)) * 180 / Math.PI);
+            put("atan2", params -> Math.atan2(params.getDouble(0), params.getDouble(1)) * 180 / Math.PI);
             put("ceil", params -> Math.ceil(params.getDouble(0)));
             put("clamp", params -> Math.min(params.getDouble(1), Math.max(params.getDouble(0), params.getDouble(2))));
-            put("cos", params -> Math.cos(params.getDouble(0)));
+            put("cos", params -> Math.cos(params.getDouble(0) * Math.PI / 180));
             put("die_roll", params -> dieRoll(params.getDouble(0), params.getDouble(1), params.getDouble(2)));
             put("die_roll_integer", params -> dieRollInt(params.getInt(0), params.getInt(1), params.getInt(2)));
             put("exp", params -> Math.exp(params.getDouble(0)));
