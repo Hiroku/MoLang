@@ -27,7 +27,7 @@ public class EvaluatorTest {
 
     @Test
     public void testEval4() throws IOException {
-        eval("expr4.txt", (213 + 2 / 0.5 + 5 + 2 * 3) + 310.5 + (10 * Math.cos(270)) + 100);
+        eval("expr4.txt", (213 + 2 / 0.5 + 5 + 2 * 3) + 310.5 + (10 * Math.cos(270 * Math.PI / 180)) + 100);
     }
 
 }
