@@ -7,6 +7,10 @@ import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoalesceExpression extends BinaryOpExpression {
 
     public CoalesceExpression(Expression left, Expression right) {
@@ -21,7 +25,10 @@ public class CoalesceExpression extends BinaryOpExpression {
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
         MoValue evalLeft = left.evaluate(scope, environment);
-        MoValue value = environment.getValue(evalLeft.asString());
+        String leftString = evalLeft.asString();
+        List<String> leftNames = List.of(leftString.split("\\."));
+
+        MoValue value = environment.getValue(new ArrayDeque<>(leftNames));
 
         if (value == null || value.equals(DoubleValue.ZERO)) {
             return right.evaluate(scope, environment);

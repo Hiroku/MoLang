@@ -8,7 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface Expression {
-
+    String getOriginalString();
+    void setOriginalString(String string);
     Map<String, Object> attributes = new HashMap<>();
 
     default Map<String, Object> getAttributes() {

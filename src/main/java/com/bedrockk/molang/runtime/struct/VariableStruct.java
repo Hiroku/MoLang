@@ -5,10 +5,7 @@ import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 @RequiredArgsConstructor
@@ -20,39 +17,41 @@ public class VariableStruct implements MoStruct {
     }
 
     @Override
-    public void set(String name, MoValue value) {
-        LinkedList<String> segments = new LinkedList<>(Arrays.asList(name.split("\\.")));
-        String main = segments.poll();
+    public void set(Deque<String> names, MoValue value) {
+        String main = names.poll();
 
-        if (segments.size() > 0 && main != null) {
-            Object struct = get(main, MoParams.EMPTY);
+        if (names.size() > 0 && main != null) {
+            Object struct = map.get(main);
 
             if (!(struct instanceof MoStruct)) {
                 struct = new VariableStruct();
             }
 
-            ((MoStruct) struct).set(segments.poll(), value);
+            ((MoStruct) struct).set(names, value);
 
             map.put(main, (MoStruct) struct);
         } else {
-            map.put(name, value);
+            map.put(main, value);
         }
     }
 
-    @Override
-    public MoValue get(String name, MoParams params) {
-        LinkedList<String> segments = new LinkedList<>(Arrays.asList(name.split("\\.")));
-        String main = segments.poll();
+    public void setDirectly(String name, MoValue value) {
+        this.map.put(name, value);
+    }
 
-        if (segments.size() > 0 && main != null) {
+    @Override
+    public MoValue get(Deque<String> names, MoParams params) {
+        String main = names.poll();
+
+        if (names.size() > 0 && main != null) {
             Object struct = map.get(main);
 
             if (struct instanceof MoStruct) {
-                return ((MoStruct) struct).get(segments.poll(), MoParams.EMPTY);
+                return ((MoStruct) struct).get(names, MoParams.EMPTY);
             }
         }
 
-        return map.get(name);
+        return map.get(main);
     }
 
     @Override

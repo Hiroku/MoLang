@@ -1,29 +1,41 @@
 package com.bedrockk.molang.ast;
 
 import com.bedrockk.molang.Expression;
+import com.bedrockk.molang.StringHolder;
 import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Value
-public class FuncCallExpression implements Expression {
+public class FuncCallExpression extends StringHolder implements Expression {
 
     Expression name;
     Expression[] args;
 
+    ArrayDeque<String> deque = new ArrayDeque<>();
+
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
         List<Expression> params = Arrays.asList(args);
-        String name = this.name instanceof NameExpression ? ((NameExpression) this.name).getName() : this.name.evaluate(scope, environment).asString();
+        ArrayList<String> names = new ArrayList<>();
+        if (name instanceof NameExpression) {
+            for (String name : ((NameExpression) name).getNames()) {
+                deque.add(name);
+            }
+        } else {
+            Collections.addAll(names, name.evaluate(scope, environment).asString().split("\\."));
+        }
 
-        return environment.getValue(name, new MoParams(
-                params.stream().map(e -> e.evaluate(scope, environment)).collect(Collectors.toList())
-        ));
+        ArrayList<MoValue> paramsParsed = new ArrayList<>(params.size());
+        for (Expression param : params) {
+            paramsParsed.add(param.evaluate(scope, environment));
+        }
+
+        return environment.getValue(new ArrayDeque<>(names), new MoParams(paramsParsed));
     }
 }

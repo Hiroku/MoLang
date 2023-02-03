@@ -17,6 +17,7 @@ public final class MoLangParser {
     private final static Map<TokenType, InfixParselet> infixParselets = new HashMap<>();
 
     private final TokenIterator tokenIterator;
+    private final String originalString;
     private final List<Token> readTokens = new ArrayList<>();
 
     static {
@@ -56,8 +57,9 @@ public final class MoLangParser {
         infixParselets.put(TokenType.ASSIGN, new AssignParselet());
     }
 
-    public MoLangParser(TokenIterator iterator) {
+    public MoLangParser(TokenIterator iterator, String originalString) {
         this.tokenIterator = iterator;
+        this.originalString = originalString;
     }
 
     public List<Expression> parse() {
@@ -112,6 +114,7 @@ public final class MoLangParser {
 
     private void initExpr(Expression expression, Token token) {
         expression.getAttributes().put("position", token.getPosition());
+        expression.setOriginalString(originalString);
     }
 
     private Precedence getPrecedence() {

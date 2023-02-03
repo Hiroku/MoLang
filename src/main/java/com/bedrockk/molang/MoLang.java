@@ -27,7 +27,7 @@ public class MoLang {
     }
 
     public static MoLangParser createParser(String code) {
-        return new MoLangParser(new TokenIterator(code));
+        return new MoLangParser(new TokenIterator(code), code);
     }
 
     public static MoLangParser createParser(Path path) {
@@ -38,11 +38,14 @@ public class MoLang {
             fileBytes = new byte[0];
         }
 
-        return new MoLangParser(new TokenIterator(new String(fileBytes, StandardCharsets.UTF_8)));
+        String code = new String(fileBytes, StandardCharsets.UTF_8);
+
+        return createParser(code);
     }
 
     public static MoLangParser createParser(InputStream stream) throws IOException {
-        return new MoLangParser(new TokenIterator(FileUtils.readFile(stream)));
+        String code = FileUtils.readFile(stream);
+        return createParser(code);
     }
 
     public static MoLangRuntime createRuntime() {

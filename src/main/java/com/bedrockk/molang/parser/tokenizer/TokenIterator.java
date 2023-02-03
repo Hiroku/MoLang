@@ -101,4 +101,8 @@ public class TokenIterator {
     public String getStringAt(int i) {
         return code.substring(i, i + 1);
     }
+
+    public String getString() {
+        return this.code;
+    }
 }

@@ -1,13 +1,14 @@
 package com.bedrockk.molang.ast;
 
 import com.bedrockk.molang.Expression;
+import com.bedrockk.molang.StringHolder;
 import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 
 @Value
-public class ReturnExpression implements Expression {
+public class ReturnExpression extends StringHolder implements Expression {
 
     Expression expression;
 

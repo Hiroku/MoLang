@@ -3,11 +3,13 @@ package com.bedrockk.molang.runtime.struct;
 import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.MoValue;
 
+import java.util.Deque;
+
 public interface MoStruct extends MoValue {
 
-    void set(String key, MoValue value);
+    void set(Deque<String> keys, MoValue value);
 
-    MoValue get(String key, MoParams params);
+    MoValue get(Deque<String> names, MoParams params);
 
     void clear();
 

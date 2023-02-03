@@ -1,42 +1,43 @@
 package com.bedrockk.molang.runtime;
 
 import com.bedrockk.molang.runtime.struct.MoStruct;
+import com.bedrockk.molang.runtime.struct.VariableStruct;
 import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.*;
 
 @Value
 public class MoLangEnvironment implements MoValue {
 
-    ConcurrentMap<String, MoStruct> structs = new ConcurrentHashMap<>();
+    Map<String, MoStruct> structs = new HashMap<>();
 
-    public MoValue getValue(String name) {
-        return getValue(name, MoParams.EMPTY);
+    public MoValue getValue(Deque<String> names) {
+        return getValue(names, MoParams.EMPTY);
     }
 
-    public MoValue getValue(String name, MoParams params) {
-        LinkedList<String> segments = new LinkedList<>(Arrays.asList(name.split("\\.")));
-        String main = segments.poll();
+    public MoValue getValue(Deque<String> names, MoParams params) {
+        String main = names.poll();
 
-        if (structs.containsKey(main)) {
-            return structs.get(main).get(String.join(".", segments), params);
+        MoStruct struct = structs.get(main);
+        if (struct != null) {
+            return struct.get(names, params);
         }
-
         return new DoubleValue(0.0);
     }
 
-    public void setValue(String name, MoValue value) {
-        LinkedList<String> segments = new LinkedList<>(Arrays.asList(name.split("\\.")));
-        String main = segments.poll();
+    public void setValue(Deque<String> names, MoValue value) {
+        String main = names.poll();
 
-        if (structs.containsKey(main)) {
-            structs.get(main).set(String.join(".", segments), value);
+        MoStruct struct = structs.get(main);
+        if (struct != null) {
+            struct.set(names, value);
         }
+    }
+
+    public void setSimpleVariable(String name, MoValue value) {
+        ((VariableStruct) structs.get("variable")).setDirectly(name, value);
     }
 
     @Override

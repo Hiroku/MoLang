@@ -3,6 +3,9 @@ package com.bedrockk.molang.runtime.struct;
 import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.MoValue;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.Map;
 
 public class ArrayStruct extends VariableStruct {
@@ -14,11 +17,20 @@ public class ArrayStruct extends VariableStruct {
     }
 
     @Override
-    public void set(String name, MoValue value) {
+    public void set(Deque<String> names, MoValue value) {
         // Last part always must be a integer
-        String[] parts = name.split("\\.");
-        parts[parts.length - 1] = String.valueOf(Integer.parseInt(parts[parts.length - 1]));
+        ArrayList<String> namesList = new ArrayList<>();
+        int numberIndex = names.size() - 1;
+        int i = 0;
+        for (String name : names) {
+            if (i == numberIndex) {
+                namesList.add(String.valueOf(Integer.parseInt(name)));
+            } else {
+                namesList.add(name);
+            }
+            i++;
+        }
 
-        super.set(String.join(".", parts), value);
+        super.set(new ArrayDeque<>(namesList), value);
     }
 }

@@ -1,6 +1,7 @@
 package com.bedrockk.molang.ast;
 
 import com.bedrockk.molang.Expression;
+import com.bedrockk.molang.StringHolder;
 import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.struct.VariableStruct;
@@ -11,7 +12,7 @@ import lombok.Value;
 import java.util.ArrayList;
 
 @Value
-public class ForEachExpression implements Expression {
+public class ForEachExpression extends StringHolder implements Expression {
 
     Expression variable;
     Expression array;
