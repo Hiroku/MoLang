@@ -17,16 +17,12 @@ public class FuncCallExpression extends StringHolder implements Expression {
     Expression name;
     Expression[] args;
 
-    ArrayDeque<String> deque = new ArrayDeque<>();
-
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
         List<Expression> params = Arrays.asList(args);
         ArrayList<String> names = new ArrayList<>();
         if (name instanceof NameExpression) {
-            for (String name : ((NameExpression) name).getNames()) {
-                deque.add(name);
-            }
+            names.addAll(((NameExpression) name).getNames());
         } else {
             Collections.addAll(names, name.evaluate(scope, environment).asString().split("\\."));
         }
@@ -36,6 +32,6 @@ public class FuncCallExpression extends StringHolder implements Expression {
             paramsParsed.add(param.evaluate(scope, environment));
         }
 
-        return environment.getValue(new ArrayDeque<>(names), new MoParams(paramsParsed));
+        return environment.getValue(names.iterator(), new MoParams(paramsParsed));
     }
 }

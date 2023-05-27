@@ -29,7 +29,7 @@ public class ArrayAccessExpression extends StringHolder implements Expression {
 
         names.add(String.valueOf((int) index.evaluate(scope, environment).asDouble()));
 
-        return environment.getValue(new ArrayDeque<>(names));
+        return environment.getValue(names.iterator());
     }
 
     @Override
@@ -43,6 +43,6 @@ public class ArrayAccessExpression extends StringHolder implements Expression {
 
         names.add(String.valueOf((int) index.evaluate(scope, environment).asDouble()));
 
-        environment.setValue(new ArrayDeque<>(names), value);
+        environment.setValue(names.iterator(), value);
     }
 }

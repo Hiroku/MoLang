@@ -3,6 +3,7 @@ package com.bedrockk.molang.runtime.struct;
 import com.bedrockk.molang.runtime.value.MoValue;
 
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.Map;
 
 public class ContextStruct extends VariableStruct {
@@ -14,7 +15,7 @@ public class ContextStruct extends VariableStruct {
     }
 
     @Override
-    public void set(Deque<String> names, MoValue value) {
+    public void set(Iterator<String> names, MoValue value) {
         throw new RuntimeException("Tried to set a value in read-only context struct");
     }
 }

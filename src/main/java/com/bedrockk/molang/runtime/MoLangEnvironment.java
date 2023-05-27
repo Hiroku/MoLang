@@ -13,12 +13,12 @@ public class MoLangEnvironment implements MoValue {
 
     Map<String, MoStruct> structs = new HashMap<>();
 
-    public MoValue getValue(Deque<String> names) {
+    public MoValue getValue(Iterator<String> names) {
         return getValue(names, MoParams.EMPTY);
     }
 
-    public MoValue getValue(Deque<String> names, MoParams params) {
-        String main = names.poll();
+    public MoValue getValue(Iterator<String> names, MoParams params) {
+        String main = names.next();
 
         MoStruct struct = structs.get(main);
         if (struct != null) {
@@ -27,8 +27,8 @@ public class MoLangEnvironment implements MoValue {
         return new DoubleValue(0.0);
     }
 
-    public void setValue(Deque<String> names, MoValue value) {
-        String main = names.poll();
+    public void setValue(Iterator<String> names, MoValue value) {
+        String main = names.next();
 
         MoStruct struct = structs.get(main);
         if (struct != null) {

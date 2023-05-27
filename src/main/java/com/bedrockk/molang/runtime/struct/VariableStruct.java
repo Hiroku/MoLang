@@ -1,11 +1,14 @@
 package com.bedrockk.molang.runtime.struct;
 
 import com.bedrockk.molang.runtime.MoParams;
+import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 @Getter
 @RequiredArgsConstructor
@@ -17,10 +20,10 @@ public class VariableStruct implements MoStruct {
     }
 
     @Override
-    public void set(Deque<String> names, MoValue value) {
-        String main = names.poll();
+    public void set(Iterator<String> names, MoValue value) {
+        String main = names.next();
 
-        if (names.size() > 0 && main != null) {
+        if (names.hasNext() && main != null) {
             Object struct = map.get(main);
 
             if (!(struct instanceof MoStruct)) {
@@ -40,10 +43,10 @@ public class VariableStruct implements MoStruct {
     }
 
     @Override
-    public MoValue get(Deque<String> names, MoParams params) {
-        String main = names.poll();
+    public MoValue get(Iterator<String> names, MoParams params) {
+        String main = names.next();
 
-        if (names.size() > 0 && main != null) {
+        if (names.hasNext() && main != null) {
             Object struct = map.get(main);
 
             if (struct instanceof MoStruct) {
@@ -51,7 +54,7 @@ public class VariableStruct implements MoStruct {
             }
         }
 
-        return map.get(main);
+        return map.getOrDefault(main, new DoubleValue(0.0));
     }
 
     @Override

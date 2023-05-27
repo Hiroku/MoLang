@@ -28,7 +28,7 @@ public class CoalesceExpression extends BinaryOpExpression {
         String leftString = evalLeft.asString();
         List<String> leftNames = List.of(leftString.split("\\."));
 
-        MoValue value = environment.getValue(new ArrayDeque<>(leftNames));
+        MoValue value = environment.getValue(leftNames.iterator());
 
         if (value == null || value.equals(DoubleValue.ZERO)) {
             return right.evaluate(scope, environment);

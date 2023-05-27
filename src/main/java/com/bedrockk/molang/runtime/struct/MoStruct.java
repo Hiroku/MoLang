@@ -4,12 +4,13 @@ import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.MoValue;
 
 import java.util.Deque;
+import java.util.Iterator;
 
 public interface MoStruct extends MoValue {
 
-    void set(Deque<String> keys, MoValue value);
+    void set(Iterator<String> keys, MoValue value);
 
-    MoValue get(Deque<String> names, MoParams params);
+    MoValue get(Iterator<String> names, MoParams params);
 
     void clear();
 
