@@ -20,7 +20,8 @@ public class NameParselet implements PrefixParselet {
 
         Expression nameExpr = new NameExpression(names);
 
-        if (args.size() > 0 || parser.getNameHead(name).equals("query") || parser.getNameHead(name).equals("math")){
+        String nameHead = parser.getNameHead(name);
+        if (args.size() > 0 || nameHead.equals("query") || nameHead.equals("math") || nameHead.equals("script")){
             return new FuncCallExpression(nameExpr, args.toArray(new Expression[0]));
         }
 

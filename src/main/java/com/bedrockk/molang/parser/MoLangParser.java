@@ -155,6 +155,7 @@ public final class MoLangParser {
             case "v" -> splits[0] = "variable";
             case "t" -> splits[0] = "temp";
             case "c" -> splits[0] = "context";
+            case "s" -> splits[0] = "script";
         }
 
         return String.join(".", splits);
