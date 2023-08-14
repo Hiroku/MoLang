@@ -36,6 +36,8 @@ public final class MoLangMath {
             put("round", params -> Math.round(params.getDouble(0)));
             put("sqrt", params -> Math.sqrt(params.getDouble(0)));
             put("trunc", params -> Math.floor(params.getDouble(0)));
+            put("d2r", params -> Math.toRadians(params.getDouble(0)));
+            put("r2d", params -> Math.toDegrees(params.getDouble(0)));
         }
     });
 
