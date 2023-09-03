@@ -34,4 +34,9 @@ public class EvaluatorTest {
     public void testEval5() throws IOException {
         eval("expr5.txt", 0, true);
     }
+
+    @Test
+    public void testEval6() throws IOException {
+        eval("expr6.txt", 2, true);
+    }
 }

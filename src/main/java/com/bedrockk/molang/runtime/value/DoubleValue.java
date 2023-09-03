@@ -31,4 +31,9 @@ public class DoubleValue implements MoValue {
     public double asDouble() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj) || (obj instanceof DoubleValue && ((DoubleValue)obj).asDouble() == value) || (obj instanceof StringValue && ((StringValue)obj).asString().equals(asString()));
+    }
 }
