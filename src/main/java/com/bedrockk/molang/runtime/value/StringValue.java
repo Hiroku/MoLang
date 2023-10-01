@@ -17,4 +17,9 @@ public class StringValue implements MoValue {
     public String asString() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj) || (obj instanceof StringValue && ((StringValue)obj).asString().equals(value)) || (obj instanceof DoubleValue && ((DoubleValue)obj).asString().equals(value));
+    }
 }
