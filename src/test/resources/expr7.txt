@@ -1,0 +1,2 @@
+v.var = 'hello'
+v.var == 'hello'

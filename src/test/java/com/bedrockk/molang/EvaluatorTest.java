@@ -39,4 +39,14 @@ public class EvaluatorTest {
     public void testEval6() throws IOException {
         eval("expr6.txt", 2, true);
     }
+
+    @Test
+    public void testEval7() throws IOException {
+        eval("expr7.txt", 1, true);
+//        var parsed = MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr7.txt"));
+//        var runtime = MoLang.createRuntime();
+//        var actual = runtime.execute(parsed).asDouble()
+//
+//        Assertions.assertEquals(round ? Math.round(expected) : expected, round ? Math.round(actual) : actual);
+    }
 }

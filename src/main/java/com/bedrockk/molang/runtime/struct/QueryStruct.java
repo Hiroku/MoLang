@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.function.Function;
@@ -14,7 +15,7 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class QueryStruct implements MoStruct {
 
-    private final Map<String, Function<MoParams, Object>> functions;
+    public final HashMap<String, Function<MoParams, Object>> functions;
 
     @Override
     public MoValue get(Iterator<String> names, MoParams params) {

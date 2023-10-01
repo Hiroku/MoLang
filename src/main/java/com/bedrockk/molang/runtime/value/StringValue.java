@@ -2,7 +2,7 @@ package com.bedrockk.molang.runtime.value;
 
 public class StringValue implements MoValue {
 
-    private final String value;
+    public String value;
 
     public StringValue(String value) {
         this.value = value;

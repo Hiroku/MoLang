@@ -5,7 +5,7 @@ public class DoubleValue implements MoValue {
     public final static DoubleValue ZERO = new DoubleValue(0.0);
     public final static DoubleValue ONE = new DoubleValue(1.0);
 
-    private final double value;
+    public double value;
 
     public DoubleValue(Object value) {
         if (value instanceof Boolean) {
