@@ -50,7 +50,7 @@ public class VariableStruct implements MoStruct {
             Object struct = map.get(main);
 
             if (struct instanceof MoStruct) {
-                return ((MoStruct) struct).get(names, MoParams.EMPTY);
+                return ((MoStruct) struct).get(names, params);
             }
         }
 

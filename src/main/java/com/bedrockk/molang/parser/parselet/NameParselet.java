@@ -22,7 +22,7 @@ public class NameParselet implements PrefixParselet {
 
         String nameHead = parser.getNameHead(name);
         if (args.size() > 0 || nameHead.equals("query") || nameHead.equals("math") || nameHead.equals("script")){
-            return new FuncCallExpression(nameExpr, args.toArray(new Expression[0]));
+            return new FuncCallExpression(nameExpr, args.toArray(new Expression[args.size()]));
         }
 
         return nameExpr;
