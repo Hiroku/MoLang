@@ -11,7 +11,7 @@ public class DoubleValue implements MoValue {
         if (value instanceof Boolean) {
             this.value = (boolean) value ? 1.0 : 0.0;
         } else if (value instanceof Number) {
-            this.value = (double) value;
+            this.value = ((Number)value).doubleValue();
         } else {
             this.value = 1.0;
         }
