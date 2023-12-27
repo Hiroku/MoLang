@@ -11,7 +11,7 @@ import java.util.*;
 @Value
 public class MoLangEnvironment implements MoValue {
 
-    Map<String, MoStruct> structs = new HashMap<>();
+    HashMap<String, MoStruct> structs = new HashMap<>();
 
     public MoValue getValue(Iterator<String> names) {
         return getValue(names, MoParams.EMPTY);

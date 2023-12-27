@@ -15,16 +15,17 @@ repositories {
 dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
     implementation("com.bedrockk:molang:1.0-SNAPSHOT")
+    implementation("com.google.code.gson:gson:2.8.9")
     compileOnly("org.projectlombok:lombok:1.18.20")
     annotationProcessor("org.projectlombok:lombok:1.18.20")
 
-    testImplementation("com.google.code.gson:gson:2.8.6")
+    testImplementation("com.google.code.gson:gson:2.8.9")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 group = "com.bedrockk"
-version = "1.1.9"
+version = "1.1.10"
 
 tasks.named<Test>("test") {
     useJUnitPlatform()

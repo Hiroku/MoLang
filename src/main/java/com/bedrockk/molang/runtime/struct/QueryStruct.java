@@ -36,4 +36,8 @@ public class QueryStruct implements MoStruct {
     public void clear() {
         functions.clear();
     }
+
+    public void addFunction(String name, Function<MoParams, Object> func) {
+        functions.put(name, func);
+    }
 }

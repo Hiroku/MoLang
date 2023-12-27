@@ -1,10 +1,12 @@
 package com.bedrockk.molang;
 
+import com.bedrockk.molang.runtime.MoLangRuntime;
+import com.bedrockk.molang.runtime.MoScope;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.IOException;
 
 @DisplayName("Parse Tests")
 public class ParseTest {
@@ -31,5 +33,12 @@ public class ParseTest {
     @DisplayName("Parse File 4")
     public void parse4() throws IOException {
         Assertions.assertDoesNotThrow(() -> MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr4.txt")));
+    }
+
+    @Test
+    public void parse5() {
+        MoLangRuntime runtime = new MoLangRuntime();
+        MoLang.createParser("temp.vari[0] = 1").parseExpression().evaluate(new MoScope(), runtime.getEnvironment());
+        System.out.println("Henlo");
     }
 }

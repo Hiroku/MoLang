@@ -16,7 +16,7 @@ public class NameParselet implements PrefixParselet {
     public Expression parse(MoLangParser parser, Token token) {
         List<Expression> args = parser.parseArgs();
         String name = parser.fixNameShortcut(token.getText());
-        ArrayList<String> names = new ArrayList(List.of(name.split("\\.")));
+        ArrayList<String> names = new ArrayList<>(List.of(name.split("\\.")));
 
         Expression nameExpr = new NameExpression(names);
 
