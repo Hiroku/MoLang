@@ -36,14 +36,17 @@ public class TokenIterator {
                 int stringStart = index;
                 int stringLength = index + 1;
 
-                while (stringLength < code.length() && !getStringAt(stringLength).equals("'")) {
+
+                String previousCharacter = "";
+                while (stringLength < code.length() && (!getStringAt(stringLength).equals("'") || previousCharacter.equals("\\"))) {
+                    previousCharacter = getStringAt(stringLength);
                     stringLength++;
                 }
 
                 stringLength++;
                 index = stringLength;
 
-                return new Token(TokenType.STRING, code.substring(stringStart + 1, stringLength - 1), getPosition());
+                return new Token(TokenType.STRING, code.substring(stringStart + 1, stringLength - 1).replace("\\'", "'"), getPosition());
             } else if (Character.isLetter(expr.charAt(0))) {
                 int nameLength = index + 1;
 
