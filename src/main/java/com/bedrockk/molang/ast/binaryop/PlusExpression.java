@@ -7,6 +7,7 @@ import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
+import com.bedrockk.molang.runtime.value.StringValue;
 
 public class PlusExpression extends BinaryOpExpression {
 
@@ -21,10 +22,13 @@ public class PlusExpression extends BinaryOpExpression {
 
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
-        if (left instanceof StringExpression || right instanceof StringExpression) {
-            return new DoubleValue(left.evaluate(scope, environment).asString() + right.evaluate(scope, environment).asString());
+        MoValue leftValue = left.evaluate(scope, environment);
+        MoValue rightValue = right.evaluate(scope, environment);
+
+        if (leftValue instanceof StringValue || rightValue instanceof StringValue) {
+            return new StringValue(leftValue.asString() + rightValue.asString());
         } else {
-            return new DoubleValue(left.evaluate(scope, environment).asDouble() + right.evaluate(scope, environment).asDouble());
+            return new DoubleValue(leftValue.asDouble() + rightValue.asDouble());
         }
     }
 }

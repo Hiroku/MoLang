@@ -21,8 +21,14 @@ public class QueryStruct implements MoStruct {
     public MoValue get(Iterator<String> names, MoParams params) {
         String key = names.next();
         Function<MoParams, Object> func = functions.get(key);
+        MoParams currentParams = names.hasNext() ? MoParams.EMPTY : params;
         if (func != null) {
-            return MoValue.of(func.apply(params));
+            Object result = func.apply(currentParams);
+            if (result instanceof MoStruct && names.hasNext()) {
+                return ((MoStruct)result).get(names, params);
+            } else {
+                return MoValue.of(result);
+            }
         }
         return null;
     }
