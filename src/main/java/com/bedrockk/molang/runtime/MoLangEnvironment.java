@@ -40,6 +40,10 @@ public class MoLangEnvironment implements MoValue {
         ((VariableStruct) structs.get("variable")).setDirectly(name, value);
     }
 
+    public MoValue getSimpleVariable(String name) {
+        return ((VariableStruct) structs.get("variable")).getMap().get(name);
+    }
+
     @Override
     public Object value() {
         return this;
