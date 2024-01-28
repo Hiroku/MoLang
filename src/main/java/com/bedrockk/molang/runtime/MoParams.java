@@ -10,11 +10,13 @@ import java.util.List;
 
 public class MoParams {
 
-    public static final MoParams EMPTY = new MoParams(new ArrayList<>());
+    public static final MoParams EMPTY = new MoParams(new MoLangEnvironment(), new ArrayList<>());
 
+    private final MoLangEnvironment environment;
     private final List<MoValue> params;
 
-    public MoParams(List<MoValue> params) {
+    public MoParams(MoLangEnvironment environment, List<MoValue> params) {
+        this.environment = environment;
         this.params = params;
     }
 
@@ -45,6 +47,9 @@ public class MoParams {
 
     public MoLangEnvironment getEnv(int index) {
         return get(index);
+    }
+    public MoLangEnvironment getEnvironment() {
+        return environment;
     }
 
     public List<MoValue> getParams() {

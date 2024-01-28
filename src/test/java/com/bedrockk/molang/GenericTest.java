@@ -1,5 +1,6 @@
 package com.bedrockk.molang;
 
+import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.StringValue;
 import org.junit.jupiter.api.Assertions;
@@ -15,7 +16,7 @@ public class GenericTest {
 	@DisplayName("MoParams Test")
 	public void testMoParams() {
 		var value = new StringValue("AAAAAAAAA");
-		var params = new MoParams(List.of(value));
+		var params = new MoParams(new MoLangEnvironment(), List.of(value));
 		Assertions.assertEquals(value.asString(), params.getString(0));
 	}
 }

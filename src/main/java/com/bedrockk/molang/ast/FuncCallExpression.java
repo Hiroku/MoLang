@@ -32,6 +32,6 @@ public class FuncCallExpression extends StringHolder implements Expression {
             paramsParsed.add(param.evaluate(scope, environment));
         }
 
-        return environment.getValue(names.iterator(), new MoParams(paramsParsed));
+        return environment.getValue(names.iterator(), new MoParams(environment, paramsParsed));
     }
 }
