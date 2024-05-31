@@ -2,7 +2,6 @@ package com.bedrockk.molang.ast.binaryop;
 
 import com.bedrockk.molang.Expression;
 import com.bedrockk.molang.ast.BinaryOpExpression;
-import com.bedrockk.molang.ast.StringExpression;
 import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.DoubleValue;

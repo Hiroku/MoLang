@@ -15,6 +15,6 @@ public class UnaryPlusExpression extends StringHolder implements Expression {
 
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
-        return new DoubleValue(+expression.evaluate(scope, environment).asDouble());
+        return expression.evaluate(scope, environment);
     }
 }

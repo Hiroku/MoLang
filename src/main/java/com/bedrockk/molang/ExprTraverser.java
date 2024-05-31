@@ -71,9 +71,9 @@ public class ExprTraverser {
             }
 
             if (removeCurrent) {
-                expressions.remove(i);
+                list.remove(i--);
             } else {
-                expressions.set(i, expression);
+                list.set(i, expression);
             }
 
             if (stopTraversal) {

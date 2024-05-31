@@ -7,8 +7,6 @@ import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CoalesceExpression extends BinaryOpExpression {

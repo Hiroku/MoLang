@@ -4,7 +4,6 @@ import com.bedrockk.molang.Expression;
 import com.bedrockk.molang.StringHolder;
 import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoScope;
-import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 

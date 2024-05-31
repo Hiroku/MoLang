@@ -2,7 +2,6 @@ package com.bedrockk.molang.runtime.struct;
 
 import com.bedrockk.molang.runtime.value.MoValue;
 
-import java.util.Deque;
 import java.util.Iterator;
 import java.util.Map;
 

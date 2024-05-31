@@ -7,10 +7,8 @@ import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Value
 public class ArrayAccessExpression extends StringHolder implements Expression {

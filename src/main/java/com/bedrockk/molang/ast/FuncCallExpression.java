@@ -8,8 +8,10 @@ import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @Value
 public class FuncCallExpression extends StringHolder implements Expression {

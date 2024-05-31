@@ -3,7 +3,6 @@ package com.bedrockk.molang.runtime.struct;
 import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.MoValue;
 
-import java.util.Deque;
 import java.util.Iterator;
 
 public interface MoStruct extends MoValue {

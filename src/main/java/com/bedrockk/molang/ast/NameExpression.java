@@ -7,7 +7,7 @@ import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Value;
 
-import java.util.*;
+import java.util.ArrayList;
 
 @Value
 public class NameExpression extends StringHolder implements Expression {

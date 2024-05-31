@@ -1,9 +1,10 @@
 package com.bedrockk.molang.runtime.struct;
 
-import com.bedrockk.molang.runtime.MoParams;
 import com.bedrockk.molang.runtime.value.MoValue;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ArrayStruct extends VariableStruct {
 

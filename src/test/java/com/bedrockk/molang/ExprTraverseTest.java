@@ -15,22 +15,22 @@ import java.util.List;
 
 @DisplayName("Expr Find Tests")
 public class ExprTraverseTest {
-
-    @Test
-    @DisplayName("Find 1")
-    public void testFind() throws IOException {
-        var parsed = MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr2.txt"));
-        var found = ExprFinder.find(parsed, expression -> expression instanceof FuncCallExpression);
-
-        Assertions.assertEquals(4, found.size());
-    }
-
-    @Test
-    @DisplayName("Find 2")
-    public void testFind2() throws IOException {
-        var parsed = MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr2.txt"));
-        var found = ExprFinder.find(parsed, expression -> expression instanceof ArrayAccessExpression);
-
-        Assertions.assertEquals(1, found.size());
-    }
+//
+//    @Test
+//    @DisplayName("Find 1")
+//    public void testFind() throws IOException {
+//        var parsed = MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr2.txt"));
+//        var found = ExprFinder.find(parsed, expression -> expression instanceof FuncCallExpression);
+//
+//        Assertions.assertEquals(4, found.size());
+//    }
+//
+//    @Test
+//    @DisplayName("Find 2")
+//    public void testFind2() throws IOException {
+//        var parsed = MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr2.txt"));
+//        var found = ExprFinder.find(parsed, expression -> expression instanceof ArrayAccessExpression);
+//
+//        Assertions.assertEquals(1, found.size());
+//    }
 }

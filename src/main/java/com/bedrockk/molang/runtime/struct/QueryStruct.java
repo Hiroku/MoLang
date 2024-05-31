@@ -1,14 +1,13 @@
 package com.bedrockk.molang.runtime.struct;
 
 import com.bedrockk.molang.runtime.MoParams;
+import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.function.Function;
 
 @Getter
@@ -30,7 +29,7 @@ public class QueryStruct implements MoStruct {
                 return MoValue.of(result);
             }
         }
-        return null;
+        return DoubleValue.ZERO;
     }
 
     @Override

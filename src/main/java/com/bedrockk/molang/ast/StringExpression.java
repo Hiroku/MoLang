@@ -11,10 +11,10 @@ import lombok.Value;
 @Value
 public class StringExpression extends StringHolder implements Expression {
 
-    String string;
+    StringValue string;
 
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
-        return new StringValue(string);
+        return string;
     }
 }
