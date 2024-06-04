@@ -11,6 +11,6 @@ public class BooleanParselet implements PrefixParselet {
 
     @Override
     public Expression parse(MoLangParser parser, Token token) {
-        return new BooleanExpression(new DoubleValue(Boolean.parseBoolean(token.getText())));
+        return new BooleanExpression(Boolean.parseBoolean(token.getText()));
     }
 }

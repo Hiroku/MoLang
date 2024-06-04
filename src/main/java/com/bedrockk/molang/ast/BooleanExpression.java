@@ -11,10 +11,10 @@ import lombok.Value;
 @Value
 public class BooleanExpression extends StringHolder implements Expression {
 
-    DoubleValue value;
+    boolean value;
 
     @Override
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
-        return value;
+        return value ? DoubleValue.ONE : DoubleValue.ZERO;
     }
 }
