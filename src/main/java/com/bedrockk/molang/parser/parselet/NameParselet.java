@@ -21,8 +21,7 @@ public class NameParselet implements PrefixParselet {
 
         Expression nameExpr = new NameExpression(names);
 
-        String nameHead = parser.getNameHead(name);
-        if (args.size() > 0 || nameHead.equals(MoLangEnvironment.QUERY) || nameHead.equals(MoLangEnvironment.MATH)){
+        if (args.size() > 0){
             return new FuncCallExpression(nameExpr, args.toArray(new Expression[args.size()]));
         }
 

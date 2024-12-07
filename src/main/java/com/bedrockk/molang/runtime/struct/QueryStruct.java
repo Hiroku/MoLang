@@ -34,7 +34,23 @@ public class QueryStruct implements MoStruct {
 
     @Override
     public void set(Iterator<String> names, MoValue value) {
-        throw new RuntimeException("Cannot set a value in query struct");
+        String main = names.next();
+
+        if (names.hasNext() && main != null) {
+            Function<MoParams, Object> function = functions.get(main);
+            if (function != null) {
+                Object struct = function.apply(MoParams.EMPTY);
+                if (!(struct instanceof MoStruct)) {
+                    throw new RuntimeException("Cannot set a value in query struct");
+                } else {
+                    ((MoStruct) struct).set(names, value);
+                }
+            } else {
+                throw new RuntimeException("Cannot set a value in query struct");
+            }
+        } else {
+            throw new RuntimeException("Cannot set a value in query struct");
+        }
     }
 
     @Override
