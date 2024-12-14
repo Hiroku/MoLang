@@ -25,7 +25,7 @@ dependencies {
 }
 
 group = "com.bedrockk"
-version = "1.1.16"
+version = "1.1.17"
 
 tasks.named<Test>("test") {
     useJUnitPlatform()

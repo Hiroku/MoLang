@@ -1,11 +1,15 @@
 package com.bedrockk.molang.runtime.value;
 
+import java.text.DecimalFormat;
+
 public class DoubleValue implements MoValue {
 
     public final static DoubleValue ZERO = new DoubleValue(0.0);
     public final static DoubleValue ONE = new DoubleValue(1.0);
 
     public double value;
+
+    public static DecimalFormat df = new DecimalFormat("0.#");
 
     public DoubleValue(Object value) {
         if (value instanceof Boolean) {
@@ -24,7 +28,11 @@ public class DoubleValue implements MoValue {
 
     @Override
     public String asString() {
-        return Double.toString(value);
+        if (value == (long) value) {
+            return String.format("%d", (long) value);
+        } else {
+            return String.format("%s", value);
+        }
     }
 
     @Override
