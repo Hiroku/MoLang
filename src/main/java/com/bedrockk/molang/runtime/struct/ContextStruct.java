@@ -15,6 +15,21 @@ public class ContextStruct extends VariableStruct {
 
     @Override
     public void set(Iterator<String> names, MoValue value) {
-        throw new RuntimeException("Tried to set a value in read-only context struct");
+        String main = names.next();
+
+        if (names.hasNext() && main != null) {
+            MoValue struct = map.get(main);
+            if (struct != null) {
+                if (!(struct instanceof MoStruct)) {
+                    throw new RuntimeException("Cannot set a value in context struct");
+                } else {
+                    ((MoStruct) struct).set(names, value);
+                }
+            } else {
+                throw new RuntimeException("Cannot set a value in context struct");
+            }
+        } else {
+            throw new RuntimeException("Cannot set a value in context struct");
+        }
     }
 }

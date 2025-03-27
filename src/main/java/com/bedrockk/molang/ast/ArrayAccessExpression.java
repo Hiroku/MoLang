@@ -20,7 +20,7 @@ public class ArrayAccessExpression extends StringHolder implements Expression {
     public MoValue evaluate(MoScope scope, MoLangEnvironment environment) {
         ArrayList<String> names = new ArrayList<>();
         if (array instanceof NameExpression) {
-            names = ((NameExpression) array).getNames();
+            names.addAll(((NameExpression) array).getNames());
         } else {
             Collections.addAll(names, array.evaluate(scope, environment).asString().split("\\."));
         }
@@ -34,7 +34,7 @@ public class ArrayAccessExpression extends StringHolder implements Expression {
     public void assign(MoScope scope, MoLangEnvironment environment, MoValue value) {
         ArrayList<String> names = new ArrayList<>();
         if (array instanceof NameExpression) {
-            names = ((NameExpression) array).getNames();
+            names.addAll(((NameExpression) array).getNames());
         } else {
             Collections.addAll(names, array.evaluate(scope, environment).asString().split("\\."));
         }

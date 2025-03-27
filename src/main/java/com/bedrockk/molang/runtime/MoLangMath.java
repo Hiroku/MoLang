@@ -39,13 +39,6 @@ public final class MoLangMath {
             put("trunc", params -> Math.floor(params.getDouble(0)));
             put("d2r", params -> Math.toRadians(params.getDouble(0)));
             put("r2d", params -> Math.toDegrees(params.getDouble(0)));
-            put("me", params -> {
-                if (params.getInt(0) == 0) {
-                    return LIBRARY;
-                } else {
-                    return DoubleValue.ZERO;
-                }
-            });
         }
     });
 

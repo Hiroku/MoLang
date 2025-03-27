@@ -13,7 +13,7 @@ import java.util.Map;
 @Getter
 @RequiredArgsConstructor
 public class VariableStruct implements MoStruct {
-    private final Map<String, MoValue> map;
+    protected final Map<String, MoValue> map;
 
     public VariableStruct() {
         this.map = new HashMap<>();
