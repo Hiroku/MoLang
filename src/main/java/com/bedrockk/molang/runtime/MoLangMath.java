@@ -39,6 +39,15 @@ public final class MoLangMath {
             put("trunc", params -> Math.floor(params.getDouble(0)));
             put("d2r", params -> Math.toRadians(params.getDouble(0)));
             put("r2d", params -> Math.toDegrees(params.getDouble(0)));
+            put("sign", params -> {
+                double val = params.getDouble(0);
+                return val >= 0 ? 1 : -1;
+            });
+            put("copy_sign", params -> {
+                double magnitude = params.getDouble(0);
+                double sign = params.getDouble(1);
+                return Math.abs(magnitude) * (sign >= 0 ? 1 : -1);
+            });
         }
     });
 
